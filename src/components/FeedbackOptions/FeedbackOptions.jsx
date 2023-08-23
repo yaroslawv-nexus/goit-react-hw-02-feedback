@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FeedButton, FeedButtonCont } from './FeedbackOptions.styled';
 
-export class Feedback extends Component {
+export class FeedbackOptions extends Component {
   onClickButton = e => {
     this.props.addFeedback(e.target.textContent);
   };
@@ -9,15 +9,17 @@ export class Feedback extends Component {
   render() {
     return (
       <FeedButtonCont>
-        <FeedButton onClick={this.onClickButton} type="button">
-          good
-        </FeedButton>
-        <FeedButton onClick={this.onClickButton} type="button">
-          neutral
-        </FeedButton>
-        <FeedButton onClick={this.onClickButton} type="button">
-          bad
-        </FeedButton>
+        {this.props.options.map(element => {
+          return (
+            <FeedButton
+              key={element}
+              onClick={this.onClickButton}
+              type="button"
+            >
+              {element}
+            </FeedButton>
+          );
+        })}
       </FeedButtonCont>
     );
   }

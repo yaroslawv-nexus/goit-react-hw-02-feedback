@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Section } from './Section/Section';
-import { Feedback } from './FeedbackOptions/FeedbackOptions';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
 import { Statistics } from './Statistics/Statistics';
 import { Notification } from './Notification/Notification';
 import {
@@ -16,7 +16,7 @@ export class App extends Component {
   };
 
   addFeedback = review => {
-    this.setState({ [review]: this.state[review] + 1 });
+    this.setState(prevState => ({ [review]: prevState[review] + 1 }));
   };
 
   render() {
@@ -25,7 +25,10 @@ export class App extends Component {
     return (
       <div>
         <Section title="Please leave feedback">
-          <Feedback addFeedback={this.addFeedback} />
+          <FeedbackOptions
+            addFeedback={this.addFeedback}
+            options={Object.keys(this.state)}
+          />
         </Section>
         {(Boolean(totalSum) && (
           <Section title="Statistics">
