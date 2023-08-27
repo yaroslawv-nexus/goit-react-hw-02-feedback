@@ -1,4 +1,3 @@
-import React, { Component } from 'react';
 import { FeedButton, FeedButtonCont } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, addFeedback }) => {
